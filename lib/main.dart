@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:hacktonteam12/Pages/SplashScreen.dart';
 import 'package:hacktonteam12/util/utility.dart';
 
 import 'Dummy/dummycontent.dart';
@@ -18,7 +19,7 @@ class MyApp extends StatelessWidget {
         primarySwatch: Colors.blue,
         visualDensity: VisualDensity.adaptivePlatformDensity,
       ),
-      home: MyHomePage(title: 'A Hackton Fest'),
+      home: SplashScreen(),
     );
   }
 }
