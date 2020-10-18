@@ -2,6 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:hacktonteam12/Dummy/dummycontent.dart';
 import 'package:hacktonteam12/Pages/DummyDescriptionPage.dart';
+import 'package:hacktonteam12/util/Cards.dart';
 import 'package:hacktonteam12/util/utility.dart';
 
 import 'AddPlantPage.dart';
@@ -70,12 +71,12 @@ class _MyHomePageState extends State<MyHomePage> {
       Container(
         padding: EdgeInsets.all(4),
         child: ListView(
-          children:myDummy.map((e) => PlantCard(e)).toList() ,
+          children:myDummy.map((e) => PlantCard(context: context, d: e)).toList() ,
         ),
       ),
       Container(
         child: ListView(
-          children: myDummy.map((e) => RankingCard(e)).toList(),
+          children: myDummy.map((e) => RankingCard(context: context, d: e)).toList(),
         ),
       ),
     ];
@@ -89,64 +90,4 @@ class _MyHomePageState extends State<MyHomePage> {
   }
 
 
-  Card PlantCard(Dummy d) {
-    return Card(
-      child: InkWell(
-        onTap: (){
-          Navigator.push(context,MaterialPageRoute(builder: (context)=>DummyPage()));
-        },
-        child: Column(
-          children: [
-            Center(
-                child:Text(d.name)
-            ),
-            Row(
-              children: [
-                Text("Pant Description-"),Text(d.age + d.height)],
-            ),
-            Row(
-              children: [Text(d.owner),Icon(Icons.add)],
-            ),
-            RaisedButton(
-              child: Text("Buy"),
-              onPressed: (){
-                //go to telegram
-              },
-            ),  //here we can make the call to individual
-          ],
-        ),
-      ),
-    );
-  }
-
-  Card RankingCard(Dummy d) {
-    return Card(
-      child: InkWell(
-        onTap: (){
-          Navigator.push(context,MaterialPageRoute(builder: (context)=>DummyPage()));
-        },
-        child: Column(
-          children: [
-            Center(
-                child:Text(d.name)
-            ),
-            Row(
-              children: [
-                Text("Pant Description-"),Text(d.age + d.height)],
-            ),
-            Row(
-              children: [Text(d.owner),Icon(Icons.add),Text("RANKING-4")],
-            ),
-            RaisedButton(
-              child: Text("Buy"),
-              onPressed: (){
-                //go to telegram
-              },
-            ),  //here we can make the call to individual
-          ],
-        ),
-      ),
-    );
-  }
 }
-

@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:flutter/material.dart';
 import 'package:hacktonteam12/Pages/MyHomePage.dart';
 import 'package:shimmer/shimmer.dart';
@@ -9,38 +11,40 @@ class SplashScreen extends StatefulWidget {
 
 class _SplashScreenState extends State<SplashScreen> {
 
-  Future<bool> checksomedata() async{
-    Future.delayed(Duration(milliseconds: 5000), (){});
-    return true;
-  }
-  void navigatehome(){
-    Navigator.of(context).pushReplacement(MaterialPageRoute(
-      builder: (BuildContext context)=> MyHomePage(title: 'A Hackton Fest')
-    ));
-  }
-
-
   @override
   Widget build(BuildContext context) {
+    AssetImage image=AssetImage('assets/logo.jpg');
+    Image img= Image(
+      image: image,
+      height: 400,
+      width: 400,
+    );
     return Scaffold(
-      appBar: AppBar(
-        title: Text('Welcome'),
-      ),
-      body: Center(
-        child: Shimmer.fromColors(
-          baseColor: Color(0xff7f00ff),
-          highlightColor: Color(0xffe100ff),
-          child: Column(
-            children: [
-              Text('Welcome',
-              style: TextStyle(fontSize: 20),
+      backgroundColor: Color.fromARGB(255, 255,255, 255),
+      body: SafeArea(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+          children: [
+            Shimmer.fromColors(
+              baseColor: Colors.blue,
+              highlightColor: Colors.grey,
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                children: [
+                  Text('Welcome',
+                    style: TextStyle(fontSize: 40,
+                      fontWeight: FontWeight.bold),
+                  ),
+                  Text('Loading',
+                    style: TextStyle(fontSize: 30,
+                        fontWeight: FontWeight.bold),
+                  ),
+                ],
               ),
-              Text('Loading',
-                style: TextStyle(fontSize: 10),
-              )
-            ],
-          ),
-        ),
+            ),
+            Center(child: img)
+          ],
+        )
       ),
     );
   }
@@ -48,11 +52,10 @@ class _SplashScreenState extends State<SplashScreen> {
   @override
   void initState() {
     super.initState();
-    checksomedata().then((value) => (value){
-      if(value){
-        navigatehome();
-      }
-    });
+   Timer(Duration(seconds: 4),
+           ()=> Navigator.of(context).pushReplacement(MaterialPageRoute(
+               builder: (BuildContext context)=> MyHomePage(title: 'A Hackton Fest')
+           )));
   }
 
 }

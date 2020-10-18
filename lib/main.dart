@@ -1,10 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:hacktonteam12/Pages/SplashScreen.dart';
-import 'package:hacktonteam12/util/utility.dart';
 
-import 'Dummy/dummycontent.dart';
-import 'Pages/AddPlantPage.dart';
-import 'Pages/MyHomePage.dart';
 
 void main() {
   runApp(MyApp());
@@ -18,8 +14,9 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
         visualDensity: VisualDensity.adaptivePlatformDensity,
+
       ),
-      home: SplashScreen(),
+      home:SplashScreen(),
     );
   }
 }
