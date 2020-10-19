@@ -1,5 +1,6 @@
 import 'dart:async';
 
+import 'package:flare_flutter/flare_actor.dart';
 import 'package:flutter/material.dart';
 import 'package:hacktonteam12/Pages/MyHomePage.dart';
 import 'package:shimmer/shimmer.dart';
@@ -25,24 +26,25 @@ class _SplashScreenState extends State<SplashScreen> {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: [
-            Shimmer.fromColors(
-              baseColor: Colors.blue,
-              highlightColor: Colors.grey,
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                children: [
-                  Text('Welcome',
+                  Text('Eents 2.0',
                     style: TextStyle(fontSize: 40,
-                      fontWeight: FontWeight.bold),
+                      fontWeight: FontWeight.bold,
+                    color: Colors.blue),
                   ),
-                  Text('Loading',
-                    style: TextStyle(fontSize: 30,
-                        fontWeight: FontWeight.bold),
-                  ),
-                ],
+            Center(
+              child: Container(
+                height: 400,
+                width: 400,
+                child: FlareActor('assets/anim.flr',
+                fit: BoxFit.contain,
+                animation: 'landing',),
               ),
             ),
-            Center(child: img)
+            Text('Loading',
+              style: TextStyle(fontSize: 30,
+                  fontWeight: FontWeight.bold,
+                  color: Colors.blue),
+            )
           ],
         )
       ),
@@ -54,7 +56,7 @@ class _SplashScreenState extends State<SplashScreen> {
     super.initState();
    Timer(Duration(seconds: 4),
            ()=> Navigator.of(context).pushReplacement(MaterialPageRoute(
-               builder: (BuildContext context)=> MyHomePage(title: 'A Hackton Fest')
+               builder: (BuildContext context)=> MyHomePage(title: 'Events 2.0')
            )));
   }
 

@@ -12,31 +12,54 @@ class PlantCard extends StatelessWidget {
   final BuildContext context;
   final Dummy d;
 
+
+
   @override
   Widget build(BuildContext context) {
+    AssetImage image=AssetImage('assets/logo.jpg');
+    Image img= Image(
+      image: image,
+      height: 400,
+      width: 400,
+    );
     return Card(
       child: InkWell(
         onTap: (){
           Navigator.push(context,MaterialPageRoute(builder: (context)=>DummyPage()));
         },
-        child: Column(
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: [
-            Center(
-                child:Text(d.name)
+            Container(
+              width: 100,
+              child: Image.asset('assets/logo.jpg'),
             ),
-            Row(
+            Column(
+              mainAxisAlignment: MainAxisAlignment.start,
               children: [
-                Text("Pant Description-"),Text(d.age + d.height)],
+               Text(d.name ,
+                 style: TextStyle(
+                   fontSize: 25,
+                   ),
+               ),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.start,
+                  children: [
+                    Text("Pant Description-"),Text(d.age + d.height)],
+                ),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.start,
+                  children: [Text(d.owner),Icon(Icons.add)],
+                ),
+                FlatButton(
+                  child: Text("Buy",
+                            style: TextStyle(color: Colors.blue),),
+                  onPressed: (){
+                    //go to telegram
+                  },
+                ),  //here we can make the call to individual
+              ],
             ),
-            Row(
-              children: [Text(d.owner),Icon(Icons.add)],
-            ),
-            RaisedButton(
-              child: Text("Buy"),
-              onPressed: (){
-                //go to telegram
-              },
-            ),  //here we can make the call to individual
           ],
         ),
       ),
@@ -61,24 +84,39 @@ class RankingCard extends StatelessWidget {
         onTap: (){
           Navigator.push(context,MaterialPageRoute(builder: (context)=>DummyPage()));
         },
-        child: Column(
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: [
-            Center(
-                child:Text(d.name)
+            Container(
+              width: 100,
+              child: Image.asset('assets/logo.jpg'),
             ),
-            Row(
+            Column(
               children: [
-                Text("Pant Description-"),Text(d.age + d.height)],
+                Center(
+                    child:Text(d.name,
+                            style: TextStyle(
+                              fontSize: 25,
+                            ),)
+                ),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.start,
+                  children: [
+                    Text("Pant Description-"),Text(d.age + d.height,
+                          )],
+                ),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.start,
+                  children: [Text(d.owner),Icon(Icons.add),Text("RANKING-4")],
+                ),
+                FlatButton(
+                  child: Text("Buy",style: TextStyle(color: Colors.blue),),
+                  onPressed: (){
+                    //go to telegram
+                  },
+                ),  //here we can make the call to individual
+              ],
             ),
-            Row(
-              children: [Text(d.owner),Icon(Icons.add),Text("RANKING-4")],
-            ),
-            RaisedButton(
-              child: Text("Buy"),
-              onPressed: (){
-                //go to telegram
-              },
-            ),  //here we can make the call to individual
           ],
         ),
       ),
